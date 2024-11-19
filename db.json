@@ -1,0 +1,348 @@
+{
+  "userInfos": [
+    {
+      "id": 1,
+      "name": "Thomas Aldox",
+      "at": "thomasdox",
+      "joined": "24 March 2017"
+    }
+  ],
+  "userContacts": [
+    {
+      "id": 1,
+      "name": "Alexandre Queque",
+      "at": "alexandro",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 2,
+      "name": "Benny Cagur",
+      "at": "bennycag",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 3,
+      "name": "Chloe Sidabutar",
+      "at": "chloesi",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 4,
+      "name": "Cindy Elisabeth",
+      "at": "alexandro",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 5,
+      "name": "Erica Silalahi",
+      "at": "ericasil",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 6,
+      "name": "Eddyson Brownlee",
+      "at": "eddyson",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 7,
+      "name": "Franklin Jr",
+      "at": "franklinjr",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 8,
+      "name": "Geovanny",
+      "at": "rendyar",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 9,
+      "name": "Samantha Eri",
+      "at": "samantha",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 10,
+      "name": "Samuel Handerson",
+      "at": "sam224",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    },
+    {
+      "id": 11,
+      "name": "Zain Edward",
+      "at": "zain",
+      "followed": true,
+      "profile": "exemplo/imagem"
+    }
+  ],
+
+  "cryptoAmount": [
+    {
+      "id": 1,
+      "coin": "bitcoin",
+      "amount": "65,123",
+      "percentage": "4%",
+      "days": 30
+    },
+    {
+      "id": 2,
+      "coin": "ethereum",
+      "amount": "2,551",
+      "percentage": "4%",
+      "days": 30
+    },
+    {
+      "id": 3,
+      "coin": "ripple",
+      "amount": "0,55",
+      "percentage": "4%",
+      "days": 30
+    },
+    {
+      "id": 4,
+      "coin": "litecoin",
+      "amount": "65,123",
+      "percentage": "4%",
+      "days": 30
+    }
+  ],
+
+  "activities": [
+    {
+      "coin": "bitcoin",
+      "hour": "06:24:45 AM",
+      "value": "+ $5,553",
+      "state": "completed"
+    },
+    {
+      "coin": "ethereum",
+      "hour": "06:24:45 AM",
+      "value": "- $542",
+      "state": "pending"
+    },
+    {
+      "coin": "ripple",
+      "hour": "06:24:45 AM",
+      "value": "- $912",
+      "state": "canceled"
+    },
+    {
+      "coin": "litecoin",
+      "hour": "06:24:45 AM",
+      "value": "+ $7,762",
+      "state": "completed"
+    },
+    {
+      "coin": "bitcoin",
+      "hour": "06:24:45 AM",
+      "value": "+ $5,553",
+      "state": "completed"
+    },
+    {
+      "coin": "ripple",
+      "hour": "06:24:45 AM",
+      "value": "- $912",
+      "state": "canceled"
+    }
+  ],
+
+  "buyOrder": [
+    {
+      "price": 86.2,
+      "amount": 0.35,
+      "total": "$126.26"
+    },
+    {
+      "price": 93.9,
+      "amount": 0.55,
+      "total": "$212.56"
+    },
+    {
+      "price": 84.2,
+      "amount": 0.25,
+      "total": "$252.58"
+    },
+    {
+      "price": 91.6,
+      "amount": 0.75,
+      "total": "$46.92"
+    },
+    {
+      "price": 83.9,
+      "amount": 0.18,
+      "total": "$237.31"
+    },
+    {
+      "price": 82.3,
+      "amount": 0.15,
+      "total": "$134.12"
+    },
+    {
+      "price": 92.6,
+      "amount": 0.21,
+      "total": "$123.27"
+    },
+    {
+      "price": 94.2,
+      "amount": 0.18,
+      "total": "$129.26"
+    }
+  ],
+
+  "sellOrder": [
+    {
+      "price": 86.3,
+      "amount": 0.15,
+      "total": "$134.12"
+    },
+    {
+      "price": 83.9,
+      "amount": 0.18,
+      "total": "$252.58"
+    },
+    {
+      "price": 84.2,
+      "amount": 0.25,
+      "total": "$252.58"
+    },
+    {
+      "price": 86.2,
+      "amount": 0.35,
+      "total": "$126.26"
+    },
+    {
+      "price": 91.6,
+      "amount": 0.75,
+      "total": "$46.92"
+    },
+    {
+      "price": 92.6,
+      "amount": 0.21,
+      "total": "$123.27"
+    },
+    {
+      "price": 93.9,
+      "amount": 0.55,
+      "total": "$212.56"
+    },
+    {
+      "price": 94.2,
+      "amount": 0.18,
+      "total": "$129.26"
+    }
+  ],
+
+  "transactions": [
+    {
+      "transactionId": "#12415346563475",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "Cindy",
+      "coin": "bitcoin",
+      "amount": "+$5,553",
+      "note": "Lorem ipsum dol.. More",
+      "status": "completed"
+    },
+    {
+      "transactionId": "##124153465125511",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "David",
+      "coin": "ethereum",
+      "amount": "-$12,768",
+      "note": "None",
+      "status": "pending"
+    },
+    {
+      "transactionId": "##124153465125511",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "Samuel",
+      "coin": "ripple",
+      "amount": "-$455",
+      "note": "Lorem ipsum dol.. More",
+      "status": "canceled"
+    },
+    {
+      "transactionId": "#12415346563475",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "Lucyana",
+      "coin": "litecoin",
+      "amount": "+$987",
+      "note": "Lorem ipsum dol.. More",
+      "status": "completed"
+    },
+    {
+      "transactionId": "#12415346563475",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "Cindy",
+      "coin": "bitcoin",
+      "amount": "+$5,553",
+      "note": "Lorem ipsum dol.. More",
+      "status": "completed"
+    },
+    {
+      "transactionId": "##124153465125511",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "David",
+      "coin": "ethereum",
+      "amount": "-$12,768",
+      "note": "None",
+      "status": "pending"
+    },
+    {
+      "transactionId": "##124153465125511",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "Samuel",
+      "coin": "ripple",
+      "amount": "-$455",
+      "note": "Lorem ipsum dol.. More",
+      "status": "canceled"
+    },
+    {
+      "transactionId": "#12415346563475",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "Lucyana",
+      "coin": "litecoin",
+      "amount": "+$987",
+      "note": "Lorem ipsum dol.. More",
+      "status": "completed"
+    },
+    {
+      "transactionId": "#12415346563475",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "Cindy",
+      "coin": "bitcoin",
+      "amount": "+$5,553",
+      "note": "Lorem ipsum dol.. More",
+      "status": "completed"
+    },
+    {
+      "transactionId": "##124153465125511",
+      "date": "2/5/2020 06:24 AM",
+      "from": "Thomas",
+      "to": "David",
+      "coin": "ethereum",
+      "amount": "-$12,768",
+      "note": "None",
+      "status": "pending"
+    }
+  ]
+}
