@@ -6,7 +6,7 @@ import {
   IconChevronDown,
   IconEth,
   IconLtc,
-  IconRpp,
+  IconXpp,
 } from "../../icons/Icones";
 import { Line } from "react-chartjs-2";
 import {
@@ -20,7 +20,6 @@ import {
   plugins,
 } from "chart.js";
 import dayjs from "dayjs";
-import { callback } from "chart.js/helpers";
 ChartJS.register(
   LineElement,
   PointElement,
@@ -60,11 +59,11 @@ export default function MarketOverview() {
       x: {
         title: { display: true },
         grid: {
-          display: false, 
+          display: false,
         },
         ticks: {
           beginZero: false,
-        }
+        },
       },
       y: {
         title: { display: true },
@@ -74,23 +73,23 @@ export default function MarketOverview() {
           stepSize: 200,
           beginZero: false,
 
-          callback: function (value) {
+          callback: function (value: any) {
             return value + "k";
           },
         },
         grid: {
-          display: true,  
+          display: true,
         },
       },
     },
     plugins: {
       tooltip: {
         callbacks: {
-          label: function (context) {
+          label: function (context: any) {
             let value = context.raw;
             return `$${value}k`;
           },
-          title: function (context) {
+          title: function (context: any) {
             const date = new Date(2020, context[0].dataIndex);
             return dayjs(date).format("D MMMM YYYY");
           },
@@ -117,11 +116,30 @@ export default function MarketOverview() {
       </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-start gap-4 w-1/2">
-          <IconAll />
-          <IconBtc size={42} color="#FFAB2D" />
-          <IconEth size={42} color="#BCBCBC" />
-          <IconRpp size={42} color="#BCBCBC" />
-          <IconLtc size={42} color="#BCBCBC" />
+          <button className="group">
+            <IconAll className="text-white group-hover:text-[#5F5F5F]" />
+          </button>
+          <button className="group">
+            <IconBtc size={42} className="text-[#FFAB2D]" />
+          </button>
+          <button className="group">
+            <IconEth
+              size={42}
+              className="text-[#BCBCBC] group-hover:text-[#DC3CCC]"
+            />
+          </button>
+          <button className="group">
+            <IconXpp
+              size={42}
+              className="text-[#BCBCBC] group-hover:text-[#2B98D6]"
+            />
+          </button>
+          <button className="group">
+            <IconLtc
+              size={42}
+              className="text-[#BCBCBC] group-hover:text-[#5F5F5F]"
+            />
+          </button>
         </div>
         <div className="flex items-center justify-end gap-2 w-1/2">
           <span className="text-xs text-[#969BA0]">Avarage</span>
@@ -129,7 +147,7 @@ export default function MarketOverview() {
         </div>
       </div>
       <div className="flex items-center w-full h-full">
-        <Line data={data} options={options} width={300}/>
+        <Line data={data} options={options} width={300} />
       </div>
     </div>
   );

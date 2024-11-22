@@ -1,4 +1,4 @@
-import { IconDots, IconRpp } from "@/components/icons/Icones";
+import { IconDots, IconXpp } from "@/components/icons/Icones";
 import { IconChevronRight } from "@/components/icons/Icones";
 
 export default function AboutXPP() {
@@ -10,10 +10,10 @@ export default function AboutXPP() {
           <IconDots />
         </div>
         <div className="flex flex-col items-center justify-center gap-2 text-xl font-semibold">
-          <IconRpp color="#2B98D6" size={112} />
+          <IconXpp color="#2B98D6" size={112} />
           <div className="flex flex-col items-center">
             <span className="font-semibold text-2xl">Ripple</span>
-            <span className="text-[#BFBFBFBF] text-sm font-semibold">RPP</span>
+            <span className="text-[#BFBFBFBF] text-sm font-semibold">XPP</span>
           </div>
         </div>
         <div className="flex flex-col gap-3 text-[#000000B2]">

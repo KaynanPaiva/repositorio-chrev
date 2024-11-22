@@ -8,10 +8,10 @@ import {
 import { useEffect, useState } from "react";
 
 export default function SellOrder() {
-  const [buy, setBuy] = useState<any[]>([]);
+  const [sellOrder, setSellOrder] = useState<any[]>([]);
 
   useEffect(() => {
-    async function fetchBuy() {
+    async function fetchSellOrder() {
       try {
         const response = await fetch("http://localhost:3001/sellOrder");
         if (!response.ok) {
@@ -19,7 +19,7 @@ export default function SellOrder() {
         }
         const data = await response.json();
         if (Array.isArray(data)) {
-          setBuy(data);
+          setSellOrder(data);
         } else {
           console.error("Formato de dados inválido", data);
         }
@@ -27,7 +27,7 @@ export default function SellOrder() {
         console.error("Erro ao buscar os dados:", error);
       }
     }
-    fetchBuy();
+    fetchSellOrder();
   }, []);
 
   return (
@@ -52,16 +52,37 @@ export default function SellOrder() {
           <span className="w-1/3 text-center">Total</span>
         </div>
         <div className="py-2">
-          {buy.map((item, index) => (
-            <div
-              key="1"
-              className="flex font-medium py-4 hover:bg-[#DC3CCC] hover:text-white transition-colors"
-            >
-              <span className="w-1/3 text-center">{item.price}</span>
-              <span className="w-1/3 text-center">{item.amount}</span>
-              <span className="w-1/3 text-center">{item.total}</span>
+          {sellOrder.length > 0 ? (
+            sellOrder.map((sellOrder) => (
+              <div
+                key={sellOrder.id}
+                className="flex font-medium py-4 hover:bg-[#DC3CCC] hover:text-white transition-colors"
+              >
+                <span className="w-1/3 text-center">{sellOrder.price}</span>
+                <span className="w-1/3 text-center">{sellOrder.amount}</span>
+                <span className="w-1/3 text-center">{sellOrder.total}</span>
+              </div>
+            ))
+          ) : (
+            <div className="flex flex-col gap-4">
+              {[...Array(8)].map((_, index) => (
+                <div
+                  key={`skeleton-${index}`}
+                  className="flex justify-between items-center px-10 py-3"
+                >
+                  <div className="flex justify-center">
+                    <div className="w-8 h-4 bg-zinc-500 rounded"></div>
+                  </div>
+                  <div className="flex justify-center">
+                    <div className="w-6 h-4 bg-zinc-400 rounded"></div>
+                  </div>
+                  <div className="flex justify-center">
+                    <div className="w-10 h-4 bg-zinc-600 rounded"></div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
         <div className="flex justify-center w-full px-6">
           <button className="flex flex-1 items-center justify-center gap-2 px-4 py-2 hover:bg-[#2b97d625] transition-colors">

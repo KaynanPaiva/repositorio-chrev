@@ -21,7 +21,7 @@ export default function Actions() {
           <IconDownload size={23} />
           <span>Save to CSV</span>
         </button>
-        <button className="flex items-center justify-center gap-4 bg-white text-[#3E4954] text-sm px-4">
+        <button className="flex items-center justify-center gap-4 bg-white border border-[#F4F5F9] text-[#3E4954] text-sm px-4">
           <IconCalendar size={23} />
           <div className="flex flex-col items-start">
             <span className="font-semibold">Filter Periode</span>

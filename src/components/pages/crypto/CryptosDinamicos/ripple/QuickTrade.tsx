@@ -4,7 +4,7 @@ import {
   IconChevronDown,
   IconArrowDownRight,
   IconArrowUpLeft,
-  IconRpp,
+  IconXpp,
 } from "@/components/icons/Icones";
 
 export default function QuickTradeXPP() {
@@ -23,17 +23,17 @@ export default function QuickTradeXPP() {
           </div>
           <div className="flex gap-1">
             <span>561,511</span>
-            <span>Rpp</span>
+            <span>Xpp</span>
           </div>
           <div>
-            <IconRpp size={42} color="#DC3CCC" />
+            <IconXpp size={42} color="#DC3CCC" />
           </div>
         </button>
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex border-2 border-[#EFEFEF]">
           <div className="flex items-center justify-center border-r-2 w-1/4 py-4">
-            <span className="text-[#888888]">Amount RPP</span>
+            <span className="text-[#888888]">Amount XPP</span>
           </div>
           <div className="w-3/4 px-2 py-6">
             <input

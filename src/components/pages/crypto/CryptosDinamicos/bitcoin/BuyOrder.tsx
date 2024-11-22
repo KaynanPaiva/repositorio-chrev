@@ -4,7 +4,7 @@ import {
   IconChevronDown,
   IconChevronTriangleRight,
   IconDots,
-  IconRpp,
+  IconXpp,
 } from "@/components/icons/Icones";
 import { useEffect, useState } from "react";
 

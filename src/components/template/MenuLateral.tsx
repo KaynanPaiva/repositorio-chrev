@@ -33,7 +33,7 @@ export default function MenuLateral() {
         <Link
           href={"/"}
           className={`flex gap-4 px-6 py-3 hover:bg-[#FAFBFF] hover:border-l-8 hover:border-[#6418C3] hover:text-[#6418C3] transition-all ${
-            pathname === "/"
+            pathname === "/" || pathname === "/portofolio"
               ? "bg-[#FAFBFF] border-[#6418C3] border-l-8 text-[#6418C3]"
               : "text-[#BFBFBF]"
           }`}
@@ -117,6 +117,10 @@ export default function MenuLateral() {
             </AccordionTrigger>
             <Link href={"/crypto/coin-details"}>
               <AccordionContent>Coin Details</AccordionContent>
+            </Link>
+            
+            <Link href={"/crypto/market/"}>
+              <AccordionContent>Market Capital</AccordionContent>
             </Link>
           </AccordionItem>
         </Accordion>

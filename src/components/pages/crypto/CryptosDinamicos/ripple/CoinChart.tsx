@@ -15,7 +15,7 @@ import {
   IconCalendar,
   IconChevronDown,
   IconChevronTriangleUp,
-  IconRpp,
+  IconXpp,
 } from "@/components/icons/Icones";
 ChartJS.register(
   LineElement,
@@ -144,9 +144,9 @@ export default function CoinChartXPP() {
         <div className="flex items-center justify-end gap-4 w-1/3">
           <div className="flex flex-col items-end">
             <span className="font-semibold text-2xl">Ripple</span>
-            <span className="font-bold text-sm text-[#00000021]">RPP</span>
+            <span className="font-bold text-sm text-[#00000021]">XPP</span>
           </div>
-          <IconRpp color="#2B98D6" size={64} />
+          <IconXpp color="#2B98D6" size={64} />
         </div>
       </div>
       <div className="flex items-center w-full h-full mt-2">

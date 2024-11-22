@@ -9,15 +9,15 @@ import {
   IconBtc,
   IconEth,
   IconLtc,
-  IconRpp,
+  IconXpp,
   IconSelector,
-} from "../../icons/Icones";
+} from "../../../icons/Icones";
 import {
   BitcoinDescription,
   EthereumDescription,
   LitecoinDescription,
   RippleDescription,
-} from "./CryptosDinamicos/CoinDescriptions";
+} from "./CoinDescriptions";
 
 export default function Cryptos() {
   const [cryptos, setCryptos] = useState<any[]>([]);
@@ -51,7 +51,7 @@ export default function Cryptos() {
       case "ethereum":
         return <IconEth color="#DC3CCC" size={52} />;
       case "ripple":
-        return <IconRpp color="#2B98D6" size={52} />;
+        return <IconXpp color="#2B98D6" size={52} />;
       case "litecoin":
         return <IconLtc color="#5F5F5F" size={52} />;
       default:

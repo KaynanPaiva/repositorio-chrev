@@ -1,17 +1,17 @@
- "use client";
+"use client";
 import {
   IconChevronDown,
   IconChevronTriangleRight,
   IconDots,
-  IconRpp,
+  IconXpp,
 } from "../../icons/Icones";
 import { useEffect, useState } from "react";
 
 export default function BuyOrder() {
-  const [buy, setBuy] = useState<any[]>([]);
+  const [buyOrder, setBuyOrder] = useState<any[]>([]);
 
   useEffect(() => {
-    async function fetchBuy() {
+    async function fetchBuyOrder() {
       try {
         const response = await fetch("http://localhost:3001/buyOrder");
         if (!response.ok) {
@@ -19,7 +19,7 @@ export default function BuyOrder() {
         }
         const data = await response.json();
         if (Array.isArray(data)) {
-          setBuy(data);
+          setBuyOrder(data);
         } else {
           console.error("Formato de dados inválido", data);
         }
@@ -27,7 +27,7 @@ export default function BuyOrder() {
         console.error("Erro ao buscar os dados:", error);
       }
     }
-    fetchBuy();
+    fetchBuyOrder();
   }, []);
 
   return (
@@ -38,7 +38,7 @@ export default function BuyOrder() {
       </div>
       <button className="flex justify-between hover:bg-[#FBFBFB] px-6 py-3">
         <div className="flex items-center gap-2">
-          <IconRpp size={50} color="#2B98D6" />
+          <IconXpp size={50} color="#2B98D6" />
           <span className="font-semibold text-lg">Ripple</span>
         </div>
         <IconChevronDown width={16} color="#868686" />
@@ -50,16 +50,37 @@ export default function BuyOrder() {
           <span className="w-1/3 text-center">Total</span>
         </div>
         <div className="py-2">
-          {buy.map((item, index) => (
-            <div
-              key="1"
-              className="flex font-medium py-4 hover:bg-[#2B98D6] hover:text-white transition-colors"
-            >
-              <span className="w-1/3 text-center">{item.price}</span>
-              <span className="w-1/3 text-center">{item.amount}</span>
-              <span className="w-1/3 text-center">{item.total}</span>
+          {buyOrder.length > 0 ? (
+            buyOrder.map((buyOrder) => (
+              <div
+                key={buyOrder.id}
+                className="flex font-medium py-4 hover:bg-[#2B98D6] hover:text-white transition-colors"
+              >
+                <span className="w-1/3 text-center">{buyOrder.price}</span>
+                <span className="w-1/3 text-center">{buyOrder.amount}</span>
+                <span className="w-1/3 text-center">{buyOrder.total}</span>
+              </div>
+            ))
+          ) : (
+            <div className="flex flex-col gap-4">
+              {[...Array(8)].map((_, index) => (
+                <div
+                  key={`skeleton-${index}`}
+                  className="flex justify-between items-center px-10 py-3"
+                >
+                  <div className="flex justify-center">
+                    <div className="w-8 h-4 bg-zinc-500 rounded"></div>
+                  </div>
+                  <div className="flex justify-center">
+                    <div className="w-6 h-4 bg-zinc-400 rounded"></div>
+                  </div>
+                  <div className="flex justify-center">
+                    <div className="w-10 h-4 bg-zinc-600 rounded"></div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
         <div className="flex justify-center w-full px-6">
           <button className="flex flex-1 items-center justify-center gap-2 px-4 py-2 hover:bg-[#2b97d625] transition-colors">

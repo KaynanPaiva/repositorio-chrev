@@ -4,12 +4,10 @@ import {
   ArrowTopUp,
   ArrowTopWithdraw,
 } from "@/components/icons/Icones";
-import Image from "next/image";
 
 export default function ToUpWithdraw() {
   return (
     <section className="flex rounded-sm">
-      {/* ESQUERDA */}
       <div className="bg-[#6418C3] relative flex px-6 py-8">
         <ArrowTopUp size={110} className="absolute bottom-0 left-10" />
         <div className="flex flex-col items-start justify-center w-2/3">
@@ -24,9 +22,6 @@ export default function ToUpWithdraw() {
           </span>
         </div>
       </div>
-
-      {/* DIREITA */}
-
       <div className="bg-[#3A0183] relative flex px-6 py-8">
         <ArrowTopWithdraw size={110} className="absolute top-0 left-10" />
         <div className="flex flex-col items-start justify-center w-2/3">

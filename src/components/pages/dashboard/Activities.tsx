@@ -1,15 +1,53 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   IconArrowDownRight,
   IconArrowUpLeft,
   IconBtc,
   IconEth,
-  IconRpp,
+  IconXpp,
   IconLtc,
 } from "../../icons/Icones";
 
 export default function RTActivities() {
+  const [activity, setActivity] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchActivity() {
+      try {
+        const response = await fetch("http://localhost:3001/recentActivities");
+        if (!response.ok) {
+          throw new Error("Erro ao carregar os contatos");
+        }
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setActivity(data);
+        } else {
+          console.error("Formato de dados inválido", data);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar os contatos:", error);
+      }
+    }
+    fetchActivity();
+  }, []);
+
+  const getCryptoIcon = (name: string) => {
+    switch (name.toLowerCase()) {
+      case "bitcoin":
+        return <IconBtc color="#FFAB2D" size={28} />;
+      case "ethereum":
+        return <IconEth color="#DC3CCC" size={28} />;
+      case "ripple":
+        return <IconXpp color="#2B98D6" size={28} />;
+      case "litecoin":
+        return <IconLtc color="#5F5F5F" size={28} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <section className="flex flex-1 flex-col gap-5 bg-white py-6">
       <div className="flex justify-between px-6">
@@ -32,102 +70,77 @@ export default function RTActivities() {
         </div>
       </div>
       <div className="flex flex-col pt-6 pb-14">
-        <div className="flex items-center border-y border-[#F5F5F5] px-6 py-3 hover:shadow-[0px_2px_40px_#6518c32b,0px_-2px_40px_#6518c32b] transition-shadow">
-          <div className="flex items-center gap-5 w-2/5">
-            <span className="bg-[#2BC1551A] p-4">
-              <IconArrowDownRight size={28} color="#2BC155" />
-            </span>
-            <div className="flex items-center gap-1">
-              <IconBtc size={28} color="#FFAB2D" />
-              <span className="text-lg font-semibold">Bitcoin</span>
+        {activity.length > 0 ? (
+          activity.map((activity) => (
+            <div
+              key={activity.id}
+              className="flex items-center border-y border-[#F5F5F5] px-6 py-3 hover:shadow-[0px_2px_40px_#6518c32b,0px_-2px_40px_#6518c32b] transition-shadow"
+            >
+              <div className="flex items-center gap-5 w-2/5">
+                <span className="bg-[#2BC1551A] p-4">
+                  {activity.amount.includes("+") ? (
+                    <IconArrowUpLeft size={28} color="#2BC155" />
+                  ) : (
+                    <IconArrowDownRight size={28} color="#2BC155" />
+                  )}
+                </span>
+                <div className="flex items-center gap-2">
+                  {getCryptoIcon(activity.coin)}
+                  <span className="text-lg font-semibold capitalize">
+                    {activity.coin}
+                  </span>
+                </div>
+              </div>
+              <span className="w-1/5">{activity.hour}</span>
+              <div className="flex justify-between w-2/5">
+                <span className="text-center font-semibold w-1/2">
+                  {activity.amount}
+                </span>
+                <span
+                  className={`text-end w-1/2 capitalize  ${
+                    activity.status === "completed"
+                      ? "text-[#2BC155]"
+                      : activity.status === "pending"
+                      ? "text-[#616161]"
+                      : activity.status === "canceled"
+                      ? "text-[#FF2E2E]"
+                      : ""
+                  }`}
+                >
+                  {activity.status}
+                </span>
+              </div>
             </div>
+          ))
+        ) : (
+          <div className="flex flex-col gap-4">
+            {[...Array(6)].map((_, index) => (
+              <div
+                key={`skeleton-${index}`}
+                className="flex justify-between items-center px-10 py-1"
+              >
+                <div className="flex items-center gap-4 w-2/5">
+                  <div>
+                    <div className="w-14 h-16 bg-zinc-700"></div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-zinc-600 rounded-full"></div>
+                    <div className="w-24 h-4 bg-zinc-600 rounded"></div>
+                  </div>
+                </div>
+                <div className="flex justify-center w-1/5">
+                  <div className="w-24 h-3 bg-zinc-400 rounded"></div>
+                </div>
+                <div className="flex justify-center w-1/5">
+                  <div className="w-12 h-4 bg-zinc-600 rounded"></div>
+                </div>
+                <div className="flex justify-end w-1/5">
+                  <div className="w-16 h-4 bg-zinc-400 rounded"></div>
+                </div>
+              </div>
+            ))}
           </div>
-          <span className="w-1/5">06:24:45 AM</span>
-          <div className="flex justify-between w-2/5">
-            <span className="text-center font-semibold w-1/2">+$5,553</span>
-            <span className="text-end text-[#2BC155] w-1/2">Completed</span>
-          </div>
-        </div>
-        <div className="flex items-center border-b border-[#F5F5F5] px-6 py-3 hover:shadow-[0px_2px_40px_#6518c32b,0px_-2px_40px_#6518c32b] transition-shadow">
-          <div className="flex items-center gap-5 w-2/5">
-            <span className="bg-[#FF2E2E1A] p-4">
-              <IconArrowUpLeft size={28} color="#FF2E2E" />
-            </span>
-            <div className="flex items-center gap-1">
-              <IconEth size={28} color="#DC3CCC" />
-              <span className="text-lg font-semibold">Ethereum</span>
-            </div>
-          </div>
-          <span className="w-1/5">06:24:45 AM</span>
-          <div className="flex justify-between w-2/5">
-            <span className="text-center font-semibold w-1/2">-$542</span>
-            <span className="text-end text-[#8E8E8E] w-1/2">Pending</span>
-          </div>
-        </div>
-        <div className="flex items-center border-b border-[#F5F5F5] px-6 py-3 hover:shadow-[0px_2px_40px_#6518c32b,0px_-2px_40px_#6518c32b] transition-shadow">
-          <div className="flex items-center gap-5 w-2/5">
-            <span className="bg-[#FF2E2E1A] p-4">
-              <IconArrowUpLeft size={28} color="#FF2E2E" />
-            </span>
-            <div className="flex items-center gap-1">
-              <IconRpp size={28} color="#2B98D6" />
-              <span className="text-lg font-semibold">Ripple</span>
-            </div>
-          </div>
-          <span className="w-1/5">06:24:45 AM</span>
-          <div className="flex justify-between w-2/5">
-            <span className="text-center font-semibold w-1/2">-$912</span>
-            <span className="text-end text-[#FF2E2E] w-1/2">Canceled</span>
-          </div>
-        </div>
-        <div className="flex items-center border-b border-[#F5F5F5] px-6 py-3 hover:shadow-[0px_2px_40px_#6518c32b,0px_-2px_40px_#6518c32b] transition-shadow">
-          <div className="flex items-center gap-5 w-2/5">
-            <span className="bg-[#2BC1551A] p-4">
-              <IconArrowDownRight size={28} color="#2BC155" />
-            </span>
-            <div className="flex items-center gap-1">
-              <IconLtc size={28} color="#5F5F5F" />
-              <span className="text-lg font-semibold">Litecoin</span>
-            </div>
-          </div>
-          <span className="w-1/5">06:24:45 AM</span>
-          <div className="flex justify-between w-2/5">
-            <span className="text-center font-semibold w-1/2">+$7,762</span>
-            <span className="text-end text-[#2BC155] w-1/2">Completed</span>
-          </div>
-        </div>
-        <div className="flex items-center border-b border-[#F5F5F5] px-6 py-3 hover:shadow-[0px_2px_40px_#6518c32b,0px_-2px_40px_#6518c32b] transition-shadow">
-          <div className="flex items-center gap-5 w-2/5">
-            <span className="bg-[#2BC1551A] p-4">
-              <IconArrowDownRight size={28} color="#2BC155" />
-            </span>
-            <div className="flex items-center gap-1">
-              <IconBtc size={28} color="#FFAB2D" />
-              <span className="text-lg font-semibold">Bitcoin</span>
-            </div>
-          </div>
-          <span className="w-1/5">06:24:45 AM</span>
-          <div className="flex justify-between w-2/5">
-            <span className="text-center font-semibold w-1/2">+$5,553</span>
-            <span className="text-end text-[#2BC155] w-1/2">Completed</span>
-          </div>
-        </div>
-        <div className="flex items-center border-b border-[#F5F5F5] px-6 py-3 hover:shadow-[0px_2px_40px_#6518c32b,0px_-2px_40px_#6518c32b] transition-shadow">
-          <div className="flex items-center gap-5 w-2/5">
-            <span className="bg-[#FF2E2E1A] p-4">
-              <IconArrowUpLeft size={28} color="#FF2E2E" />
-            </span>
-            <div className="flex items-center gap-1">
-              <IconRpp size={28} color="#2B98D6" />
-              <span className="text-lg font-semibold">Ripple</span>
-            </div>
-          </div>
-          <span className="w-1/5">06:24:45 AM</span>
-          <div className="flex justify-between w-2/5">
-            <span className="text-center font-semibold w-1/2">-$912</span>
-            <span className="text-end text-[#FF2E2E] w-1/2">Canceled</span>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

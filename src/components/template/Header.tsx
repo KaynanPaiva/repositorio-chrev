@@ -6,15 +6,18 @@ import {
   IconNotificantion,
   IconPromos,
 } from "../icons/Icones";
+import Link from "next/link";
 
 const pageTitles: Record<string, string> = {
   "/": "Dashboard",
+  "/portofolio": "Portofolio",
   "/wallet": "My Wallet",
   "/transactions": "Transactions",
   "/crypto": "Crypto",
   "/crypto/coin-details": "Coin Details",
   "/exchange": "Exchange",
   "/settings": "Settings",
+  "/crypto/market": "Market Capital",
 };
 
 export default function Header() {
@@ -59,7 +62,9 @@ export default function Header() {
           </span>
           <span className="text-zinc-400">Super Admin</span>
         </div>
-        <div className="bg-[#C4C4C4] w-10 h-10"></div>
+        <Link href={"/portofolio"}>
+          <button className="bg-[#C4C4C4] w-10 h-10"></button>
+        </Link>
       </div>
     </header>
   );

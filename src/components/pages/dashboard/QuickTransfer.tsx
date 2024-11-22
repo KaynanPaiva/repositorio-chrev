@@ -1,13 +1,35 @@
-import { IconLtc, IconChevronDown } from "../../icons/Icones";
+"use client";
+
+import { useEffect, useState } from "react";
+import { IconLtc, IconChevronDown, IconArrowRight } from "../../icons/Icones";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 export default function QuickTransfer() {
+  const [recentContacts, setRecentContacts] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchRecentContacts() {
+      try {
+        const response = await fetch("http://localhost:3001/recentContacts");
+        if (!response.ok) {
+          throw new Error("Erro ao carregar os contatos");
+        }
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setRecentContacts(data);
+        } else {
+          console.error("Formato de dados inválido", data);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar os contatos:", error);
+      }
+    }
+    fetchRecentContacts();
+  }, []);
   return (
     <section className="flex flex-1 flex-col gap-4 bg-white p-6">
       <div className="flex items-center justify-between py-2">
@@ -66,60 +88,40 @@ export default function QuickTransfer() {
         <div className="">
           <Carousel>
             <CarouselContent>
-              <CarouselItem className="basis-1/5">
-                <div>
-                  <div className="bg-[#C4C4C4] h-20 w-2/3"></div>
-                  <div className="flex flex-col">
-                    <span className="font-medium">Samuel</span>
-                    <span className="text-sm font-light">@sam224</span>
-                  </div>
+              {recentContacts.length > 0 ? (
+                recentContacts.map((recentContacts) => (
+                  <CarouselItem key={recentContacts.id} className="basis-1/5">
+                    <div>
+                      <div className="bg-[#C4C4C4] h-20 w-2/3"></div>
+                      <div className="flex flex-col">
+                        <span className="font-medium">
+                          {recentContacts.name}
+                        </span>
+                        <span className="text-sm font-light">
+                          @{recentContacts.at}
+                        </span>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))
+              ) : (
+                <div className="flex w-full">
+                  {[...Array(6)].map((_, index) => (
+                    <CarouselItem
+                      key={`skeleton-${index}`}
+                      className="basis-1/5"
+                    >
+                      <div>
+                        <div className="bg-[#C4C4C4] h-20 w-2/3"></div>
+                        <div className="flex flex-col">
+                          <span className="font-medium">Name</span>
+                          <span className="text-sm font-light">@</span>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
                 </div>
-              </CarouselItem>
-              <CarouselItem className="basis-1/5">
-                <div>
-                  <div className="bg-[#C4C4C4] h-20 w-2/3"></div>
-                  <div className="flex flex-col">
-                    <span className="font-medium ">Cindy</span>
-                    <span className="text-sm font-light">@cindyss</span>
-                  </div>
-                </div>
-              </CarouselItem>
-              <CarouselItem className="basis-1/5">
-                <div>
-                  <div className="bg-[#C4C4C4] h-20 w-2/3"></div>
-                  <div className="flex flex-col">
-                    <span className="font-medium">David</span>
-                    <span className="text-sm font-light">@davidxc</span>
-                  </div>
-                </div>
-              </CarouselItem>
-              <CarouselItem className="basis-1/5">
-                <div>
-                  <div className="bg-[#C4C4C4] h-20 w-2/3"></div>
-                  <div className="flex flex-col">
-                    <span className="font-medium">Martha</span>
-                    <span className="text-sm font-light">@marthaa</span>
-                  </div>
-                </div>
-              </CarouselItem>
-              <CarouselItem className="basis-1/5">
-                <div>
-                  <div className="bg-[#C4C4C4] h-20 w-2/3"></div>
-                  <div className="flex flex-col">
-                    <span className="font-medium">Olivia</span>
-                    <span className="text-sm font-light">@olivia62</span>
-                  </div>
-                </div>
-              </CarouselItem>
-              <CarouselItem className="basis-1/5">
-                <div>
-                  <div className="bg-[#C4C4C4] h-20 w-2/3"></div>
-                  <div className="flex flex-col">
-                    <span className="font-medium">Bella</span>
-                    <span className="text-sm font-light">@bellazz</span>
-                  </div>
-                </div>
-              </CarouselItem>
+              )}
             </CarouselContent>
           </Carousel>
         </div>
@@ -139,4 +141,4 @@ export default function QuickTransfer() {
       </div>
     </section>
   );
-} 
+}

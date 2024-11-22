@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import bitcoin from "@/images/coinBitcoin.svg";
@@ -15,7 +14,6 @@ export default function CryptosGraph2() {
     async function fetchCryptos() {
       try {
         const response = await fetch("http://localhost:3001/cryptoAmount");
-
         if (!response.ok) {
           throw new Error("Erro ao carregar os dados");
         }
@@ -50,61 +48,60 @@ export default function CryptosGraph2() {
     }
   };
 
+  const getGraphImage = (graphPath: string) => {
+    return graphPath.replace("/public", "");
+  };
+
   return (
     <div className="flex gap-6 w-full">
       {cryptos.length > 0 ? (
         cryptos.map((crypto) => (
           <div
             key={crypto.id}
-            className="flex items-center bg-white justify-between w-1/4 px-4 py-4"
+            className="flex flex-col items-center bg-white justify-between w-1/4 px-4 py-4"
           >
-            <div className="flex flex-col gap-[2px]">
-              <span className="text-2xl font-semibold">${crypto.price}</span>
-              <span className="flex gap-2 text-xs">
-                <IconGraficoPositivo width={30} height={20} color=""/>
-                {crypto.percentage} ({`${crypto.days} days`})
-              </span>
+            <div className="flex justify-between w-full gap-[2px]">
+              <div>
+                <span className="text-2xl font-semibold">${crypto.amount}</span>
+                <span className="flex gap-2 text-xs">
+                  <IconGraficoPositivo width={30} height={20} color="" />
+                  {crypto.percentage} ({crypto.days} days)
+                </span>
+              </div>
+              <div>
+                <span>
+                  <Image
+                    alt={`${crypto.coin} Image`}
+                    width={60}
+                    height={60}
+                    src={getCryptoImage(crypto.coin)}
+                  />
+                </span>
+              </div>
             </div>
-            <span>
-              <Image
-                alt={`${crypto.coin} Image`}
-                width={60}
-                height={60}
-                src={getCryptoImage(crypto.coin)}
-              />
-            </span>
+            <div className="w-full">
+              {crypto.dashboardGraphs && (
+                <Image
+                  alt="Graph"
+                  width={360}
+                  height={48}
+                  src={getGraphImage(crypto.dashboardGraphs)}
+                />
+              )}
+            </div>
           </div>
         ))
       ) : (
         <div className="flex gap-6 w-full">
-          <div className="w-1/4 bg-white h-[92px] flex items-center justify-between px-4">
-            <div className="w-1/2 flex flex-col gap-1">
-              <div className="bg-zinc-500 w-1/4 h-8"></div>
-              <span className="bg-zinc-300 w-2/4 h-4"></span>
+          {[...Array(4)].map((_, index) => (
+            <div className="w-1/4 bg-white h-[92px] flex items-center justify-between px-4">
+              <div className="w-1/2 flex flex-col gap-1">
+                <div className="bg-zinc-500 w-1/4 h-8"></div>
+                <span className="bg-zinc-300 w-2/4 h-4"></span>
+              </div>
+              <div className="bg-zinc-500 h-14 w-14"></div>
             </div>
-            <div className="bg-zinc-500 h-14 w-14"></div>
-          </div>
-          <div className="w-1/4 bg-white h-[92px] flex items-center justify-between px-4">
-            <div className="w-1/2 flex flex-col gap-1">
-              <div className="bg-zinc-500 w-1/4 h-8"></div>
-              <span className="bg-zinc-300 w-2/4 h-4"></span>
-            </div>
-            <div className="bg-zinc-500 h-14 w-14"></div>
-          </div>
-          <div className="w-1/4 bg-white h-[92px] flex items-center justify-between px-4">
-            <div className="w-1/2 flex flex-col gap-1">
-              <div className="bg-zinc-500 w-1/4 h-8"></div>
-              <span className="bg-zinc-300 w-2/4 h-4"></span>
-            </div>
-            <div className="bg-zinc-500 h-14 w-14"></div>
-          </div>
-          <div className="w-1/4 bg-white h-[92px] flex items-center justify-between px-4">
-            <div className="w-1/2 flex flex-col gap-1">
-              <div className="bg-zinc-500 w-1/4 h-8"></div>
-              <span className="bg-zinc-300 w-2/4 h-4"></span>
-            </div>
-            <div className="bg-zinc-500 h-14 w-14"></div>
-          </div>
+          ))}
         </div>
       )}
     </div>

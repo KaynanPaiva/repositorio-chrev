@@ -2,14 +2,14 @@ import {
   IconChevronTriangleUp,
   IconChevronTriangleDown,
 } from "@/components/icons/Icones";
-export default function Table() {
+export default function HeaderTable() {
   return (
-    <section className="flex w-full bg-white px-6 py-4">
+    <section className="flex w-full bg-white px-6 py-4 border-b-2 border-[#E9ECFF]">
       <div className="flex items-center w-1/12">
         <input type="checkbox" className="h-5 w-10 border-black" />
       </div>
       <div className="flex items-center justify-start gap-3 w-2/12">
-        <span>Transaction ID</span>
+        <span className="font-medium">Transaction ID</span>
         <div className="flex flex-col">
           <button className="group">
             <IconChevronTriangleUp
@@ -26,7 +26,7 @@ export default function Table() {
         </div>
       </div>
       <div className="flex items-center justify-start gap-3 w-2/12">
-        <span>Date</span>
+        <span className="font-medium">Date</span>
         <div className="flex flex-col">
           <button className="group">
             <IconChevronTriangleUp
@@ -44,7 +44,7 @@ export default function Table() {
         <span className="px-10"></span>
       </div>
       <div className="flex items-center justify-start gap-3 w-1/12">
-        <span>From</span>
+        <span className="font-medium">From</span>
         <div className="flex flex-col">
           <button className="group">
             <IconChevronTriangleUp
@@ -61,7 +61,7 @@ export default function Table() {
         </div>
       </div>
       <div className="flex items-center justify-start gap-3 w-1/12">
-        <span>To</span>
+        <span className="font-medium">To</span>
         <div className="flex flex-col">
           <button className="group">
             <IconChevronTriangleUp
@@ -78,7 +78,7 @@ export default function Table() {
         </div>
       </div>
       <div className="flex items-center justify-start gap-3 w-1/12">
-        <span>Coin</span>
+        <span className="font-medium">Coin</span>
         <div className="flex flex-col">
           <button className="group">
             <IconChevronTriangleUp
@@ -95,7 +95,7 @@ export default function Table() {
         </div>
       </div>
       <div className="flex items-center justify-start gap-3 w-1/12">
-        <span>Amount</span>
+        <span className="font-medium">Amount</span>
         <div className="flex flex-col">
           <button className="group">
             <IconChevronTriangleUp
@@ -112,7 +112,7 @@ export default function Table() {
         </div>
       </div>
       <div className="flex items-center justify-start gap-3 w-2/12">
-        <span>Note</span>
+        <span className="font-medium">Note</span>
         <div className="flex flex-col">
           <button className="group">
             <IconChevronTriangleUp
@@ -129,7 +129,7 @@ export default function Table() {
         </div>
       </div>
       <div className="flex items-center justify-end gap-3 w-1/12">
-        <span>Status</span>
+        <span className="font-medium">Status</span>
         <div className="flex flex-col">
           <button className="group">
             <IconChevronTriangleUp

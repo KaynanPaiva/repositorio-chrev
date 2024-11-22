@@ -1,4 +1,4 @@
-import Cryptos from "@/components/pages/crypto/CryptosDetails";
+import Cryptos from "@/components/pages/crypto/CryptosDinamicos/CryptosDetails";
 import HeaderCryto from "@/components/pages/crypto/Header";
 import About from "@/components/pages/crypto/CryptosDinamicos/bitcoin/About";
 
